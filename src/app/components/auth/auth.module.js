@@ -1,8 +1,10 @@
 import uiRouter from 'angular-ui-router';
 import firebase from 'firebase';
 import angularfire from 'angularfire';
+import authService from './auth.service';
 import login from './login/login.module';
 import register from './register/register.module';
+import form from './auth-form/auth-form.module';
 
 const auth = angular
   .module('components.auth', [
@@ -10,8 +12,10 @@ const auth = angular
     angularfire,
     login,
     register,
+    form,
   ])
   .config(config)
+  .service('authService', authService)
   .name;
 
 function config($firebaseRefProvider, $stateProvider) {
