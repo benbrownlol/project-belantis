@@ -5,7 +5,7 @@ const registerComponent = {
   controller: registerCtrl,
 };
 
-function registerCtrl(authService) {
+function registerCtrl(authService, $state) {
   this.$onInit = () => {
     this.error = null;
     this.user = {
@@ -15,14 +15,15 @@ function registerCtrl(authService) {
   };
   this.createUser = (event) => authService
     .register(event.user)
-    .then(response => {
-      console.debug('Success:', response);
+    .then(() => {
+      $state.go('app');
     }, reason => {
       this.error = reason.message;
     });
 }
 registerCtrl.$inject = [
   'authService',
+  '$state',
 ];
 
 export default registerComponent;

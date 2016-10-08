@@ -79,10 +79,11 @@ const config = {
     extract.styles,
   ],
   sassLoader: {
-    includePaths: [styles],
+    includePaths: [paths.styles],
   },
   output: {
     path: `${dist}/`,
+    publicPath: '/',
     filename: 'js/app.[name].js',
   },
 };

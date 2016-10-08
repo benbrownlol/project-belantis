@@ -5,8 +5,8 @@
   },
   "rules": {
     "indent": ["error", 2],
-    "wrap-iife": ["error", "inside"],
-    "new-cap": 0,
-    "no-use-before-define": 0
+    "no-use-before-define": 0,
+    "consistent-return": 0,
+    "new-cap": 0
   }
 }

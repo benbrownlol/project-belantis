@@ -1,6 +1,7 @@
 import uiRouter from 'angular-ui-router';
 import firebase from 'firebase';
 import angularfire from 'angularfire';
+import authStyles from './auth.scss';
 import authService from './auth.service';
 import login from './login/login.module';
 import register from './register/register.module';
@@ -15,6 +16,7 @@ const auth = angular
     form,
   ])
   .config(config)
+  .run(run)
   .service('authService', authService)
   .name;
 
@@ -45,6 +47,26 @@ function config($firebaseRefProvider, $stateProvider) {
 config.$inject = [
   '$firebaseRefProvider',
   '$stateProvider',
+];
+
+function run($transitions, $state, authService) {
+  $transitions.onStart({
+    to: state => !!(state.data && state.data.requiredAuth),
+  }, () => {
+    authService
+      .requireAuthentication()
+      .catch(() => $state.target('auth.login'));
+  });
+  $transitions.onStart({
+    to: 'auth.*',
+  }, () => {
+    if (authService.isAuthenticated()) return $state.target('app');
+  });
+}
+run.$inject = [
+  '$transitions',
+  '$state',
+  'authService',
 ];
 
 export default auth;

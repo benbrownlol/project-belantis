@@ -5,7 +5,7 @@ const loginComponent = {
   controller: loginCtrl,
 };
 
-function loginCtrl(authService) {
+function loginCtrl(authService, $state) {
   this.$onInit = () => {
     this.error = null;
     this.user = {
@@ -15,14 +15,15 @@ function loginCtrl(authService) {
   };
   this.loginUser = (event) => authService
     .login(event.user)
-    .then(response => {
-      console.debug('Success:', response);
+    .then(() => {
+      $state.go('app');
     }, reason => {
       this.error = reason.message;
     });
 }
 loginCtrl.$inject = [
   'authService',
+  '$state',
 ];
 
 export default loginComponent;
