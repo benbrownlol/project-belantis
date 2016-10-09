@@ -3,7 +3,7 @@ import navTemplate from './app-nav.html';
 const navComponent = {
   bindings: {
     user: '<',
-    logout: '&',
+    onLogout: '&',
   },
   templateUrl: navTemplate,
   controller: navCtrl,

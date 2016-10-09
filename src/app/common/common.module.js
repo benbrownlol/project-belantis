@@ -1,12 +1,10 @@
 import loader from 'angular-loading-bar';
 import app from './app.module';
-import appNav from './app-nav.module';
 
 const common = angular
   .module('common', [
     loader,
     app,
-    appNav,
   ])
   .run(run)
   .name;

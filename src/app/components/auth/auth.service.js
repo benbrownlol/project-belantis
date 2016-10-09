@@ -12,6 +12,10 @@ function authService($firebaseAuth) {
     .$createUserWithEmailAndPassword(user.email, user.password)
     .then(storeAuthData);
 
+  this.logout = () => auth
+    .$signOut()
+    .then(clearAuthData);
+
   this.requireAuthentication = () => auth
     .$waitForSignIn()
     .then(onSignIn);
@@ -22,16 +26,21 @@ function authService($firebaseAuth) {
     if (authData) return authData;
   };
 
+  function onSignIn(user) {
+    // REVIEW: Function side-effect - Should make pure?
+    authData = user;
+    return auth.$requireSignIn();
+  }
+
   function storeAuthData(data) {
     // REVIEW: Function side-effect - Should make pure?
     authData = data;
     return authData;
   }
 
-  function onSignIn(user) {
+  function clearAuthData() {
     // REVIEW: Function side-effect - Should make pure?
-    authData = user;
-    return auth.$requireSignIn();
+    authData = null;
   }
 }
 authService.$inject = [
