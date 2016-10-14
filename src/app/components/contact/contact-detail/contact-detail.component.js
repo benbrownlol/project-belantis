@@ -1,29 +1,26 @@
-import contactDetailTemplate from './contact-detail.html';
+import templateUrl from './contact-detail.html';
 
 const contactDetailComponent = {
   bindings: {
     contact: '<',
     onSave: '&',
   },
-  templateUrl: contactDetailTemplate,
-  controller: contactDetailCtrl,
+  templateUrl,
+  controller() {
+    'ngInject';
+
+    this.$onInit = () => {
+      this.isNewContact = !this.contact.$id;
+    };
+
+    this.saveContact = () => {
+      this.onSave({
+        $event: {
+          contact: this.contact,
+        },
+      });
+    };
+  },
 };
-
-function contactDetailCtrl() {
-  this.$onInit = () => {
-    this.isNewContact = !this.contact.$id;
-  };
-
-  this.saveContact = () => {
-    this.onSave({
-      $event: {
-        contact: this.contact,
-      },
-    });
-  };
-}
-contactDetailCtrl.$inject = [
-
-];
 
 export default contactDetailComponent;

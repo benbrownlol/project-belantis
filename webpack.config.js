@@ -39,8 +39,8 @@ const scripts = {
   test: /\.js$/,
   exclude: /node_modules/,
   loaders: [
-    'babel',
     'ng-annotate',
+    'babel',
   ],
 };
 

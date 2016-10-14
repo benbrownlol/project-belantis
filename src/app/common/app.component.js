@@ -1,17 +1,13 @@
-import appTemplate from './app.html';
+import templateUrl from './app.html';
 
 const appComponent = {
-  templateUrl: appTemplate,
-  controller: appCtrl,
-};
+  templateUrl,
+  controller(authService, $state) {
+    'ngInject';
 
-function appCtrl(authService, $state) {
-  this.user = authService.getUser();
-  this.logout = () => authService.logout().then(() => $state.go('auth.login'));
-}
-appCtrl.$inject = [
-  'authService',
-  '$state',
-];
+    this.user = authService.getUser();
+    this.logout = () => authService.logout().then(() => $state.go('auth.login'));
+  },
+};
 
 export default appComponent;

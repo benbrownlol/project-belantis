@@ -7,19 +7,16 @@ const contactNew = angular
     uiRouter,
   ])
   .component('contactNew', contactNewComponent)
-  .config(config)
-  .name;
+  .config(($stateProvider) => {
+    'ngInject';
 
-function config($stateProvider) {
-  $stateProvider
-    .state('new', {
-      parent: 'app',
-      url: '/new',
-      component: 'contactNew',
-    });
-}
-config.$inject = [
-  '$stateProvider',
-];
+    $stateProvider
+      .state('new', {
+        parent: 'app',
+        url: '/new',
+        component: 'contactNew',
+      });
+  })
+  .name;
 
 export default contactNew;

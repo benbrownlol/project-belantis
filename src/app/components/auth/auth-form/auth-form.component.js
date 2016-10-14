@@ -1,4 +1,4 @@
-import formTemplate from './auth-form.html';
+import templateUrl from './auth-form.html';
 
 const formComponent = {
   bindings: {
@@ -7,23 +7,23 @@ const formComponent = {
     message: '@',
     onSubmit: '&',
   },
-  templateUrl: formTemplate,
-  controller: formCtrl,
-};
+  templateUrl,
+  controller() {
+    'ngInject';
 
-function formCtrl() {
-  this.$onChanges = changes => {
-    if (changes.user) {
-      this.user = angular.copy(this.user);
-    }
-  };
-  this.submitForm = () => {
-    this.onSubmit({
-      $event: {
-        user: this.user,
-      },
-    });
-  };
-}
+    this.$onChanges = changes => {
+      if (changes.user) {
+        this.user = angular.copy(this.user);
+      }
+    };
+    this.submitForm = () => {
+      this.onSubmit({
+        $event: {
+          user: this.user,
+        },
+      });
+    };
+  },
+};
 
 export default formComponent;

@@ -16,58 +16,49 @@ const auth = angular
     register,
     form,
   ])
-  .config(config)
-  .run(run)
+  .config(($firebaseRefProvider, $stateProvider) => {
+    'ngInject';
+
+    const firebaseConfig = {
+      apiKey: 'AIzaSyBSf5XnsvoPRewbCVQ1MXPD62KKlA7N6-o',
+      authDomain: 'project-belantis.firebaseapp.com',
+      databaseURL: 'https://project-belantis.firebaseio.com',
+      storageBucket: 'project-belantis.appspot.com',
+      messagingSenderId: '615638830609',
+    };
+
+    $firebaseRefProvider
+      .registerUrl({
+        default: firebaseConfig.databaseURL,
+        contacts: `${firebaseConfig.databaseURL}/contacts`,
+      });
+
+    firebase.initializeApp(firebaseConfig);
+
+    $stateProvider
+      .state('auth', {
+        redirectTo: 'auth.login',
+        url: '/auth',
+        template: '<div ui-view></div>',
+      });
+  })
+  .run(($transitions, $state, authService) => {
+    'ngInject';
+
+    $transitions.onStart({
+      to: state => !!(state.data && state.data.requiredAuth),
+    }, () => {
+      authService
+        .requireAuthentication()
+        .catch(() => $state.target('auth.login'));
+    });
+    $transitions.onStart({
+      to: 'auth.*',
+    }, () => {
+      if (authService.isAuthenticated()) return $state.target('app');
+    });
+  })
   .service('authService', authService)
   .name;
-
-function config($firebaseRefProvider, $stateProvider) {
-  const firebaseConfig = {
-    apiKey: 'AIzaSyBSf5XnsvoPRewbCVQ1MXPD62KKlA7N6-o',
-    authDomain: 'project-belantis.firebaseapp.com',
-    databaseURL: 'https://project-belantis.firebaseio.com',
-    storageBucket: 'project-belantis.appspot.com',
-    messagingSenderId: '615638830609',
-  };
-
-  $firebaseRefProvider
-    .registerUrl({
-      default: firebaseConfig.databaseURL,
-      contacts: `${firebaseConfig.databaseURL}/contacts`,
-    });
-
-  firebase.initializeApp(firebaseConfig);
-
-  $stateProvider
-    .state('auth', {
-      redirectTo: 'auth.login',
-      url: '/auth',
-      template: '<div ui-view></div>',
-    });
-}
-config.$inject = [
-  '$firebaseRefProvider',
-  '$stateProvider',
-];
-
-function run($transitions, $state, authService) {
-  $transitions.onStart({
-    to: state => !!(state.data && state.data.requiredAuth),
-  }, () => {
-    authService
-      .requireAuthentication()
-      .catch(() => $state.target('auth.login'));
-  });
-  $transitions.onStart({
-    to: 'auth.*',
-  }, () => {
-    if (authService.isAuthenticated()) return $state.target('app');
-  });
-}
-run.$inject = [
-  '$transitions',
-  '$state',
-  'authService',
-];
 
 export default auth;

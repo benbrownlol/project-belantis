@@ -12,16 +12,12 @@ const root = angular
     components,
   ])
   .component('root', rootComponent)
-  .config(config)
-  .name;
+  .config(($locationProvider, $urlRouterProvider) => {
+    'ngInject';
 
-function config($locationProvider, $urlRouterProvider) {
-  // $locationProvider.html5Mode(true);
-  $urlRouterProvider.otherwise('/auth/login');
-}
-config.$inject = [
-  '$locationProvider',
-  '$urlRouterProvider',
-];
+    // $locationProvider.html5Mode(true);
+    $urlRouterProvider.otherwise('/auth/login');
+  })
+  .name;
 
 export default root;

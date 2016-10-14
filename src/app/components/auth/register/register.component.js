@@ -1,29 +1,25 @@
-import registerTemplate from './register.html';
+import templateUrl from './register.html';
 
 const registerComponent = {
-  templateUrl: registerTemplate,
-  controller: registerCtrl,
-};
+  templateUrl,
+  controller(authService, $state) {
+    'ngInject';
 
-function registerCtrl(authService, $state) {
-  this.$onInit = () => {
-    this.error = null;
-    this.user = {
-      email: '',
-      password: '',
+    this.$onInit = () => {
+      this.error = null;
+      this.user = {
+        email: '',
+        password: '',
+      };
     };
-  };
-  this.createUser = (event) => authService
-    .register(event.user)
-    .then(() => {
-      $state.go('app');
-    }, reason => {
-      this.error = reason.message;
-    });
-}
-registerCtrl.$inject = [
-  'authService',
-  '$state',
-];
+    this.createUser = (event) => authService
+      .register(event.user)
+      .then(() => {
+        $state.go('app');
+      }, reason => {
+        this.error = reason.message;
+      });
+  },
+};
 
 export default registerComponent;

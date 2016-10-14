@@ -11,22 +11,19 @@ const app = angular
     appSidebar,
   ])
   .component('app', appComponent)
-  .config(config)
-  .name;
+  .config(($stateProvider) => {
+    'ngInject';
 
-function config($stateProvider) {
-  $stateProvider
-    .state('app', {
-      // redirectTo: 'contacts',
-      url: '/app',
-      data: {
-        requiredAuth: true,
-      },
-      component: 'app',
-    });
-}
-config.$inject = [
-  '$stateProvider',
-];
+    $stateProvider
+      .state('app', {
+        // redirectTo: 'contacts',
+        url: '/app',
+        data: {
+          requiredAuth: true,
+        },
+        component: 'app',
+      });
+  })
+  .name;
 
 export default app;

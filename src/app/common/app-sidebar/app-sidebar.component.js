@@ -1,29 +1,27 @@
-import sidebarTemplate from './app-sidebar.html';
+import templateUrl from './app-sidebar.html';
 
 const sidebarComponent = {
-  templateUrl: sidebarTemplate,
-  controller: sidebarCtrl,
-};
+  templateUrl,
+  controller() {
+    'ngInject';
 
-function sidebarCtrl() {
-  this.contactTags = [{
-    label: 'All contacts',
-    icon: 'star',
-  }, {
-    label: 'Friends',
-    icon: 'people',
-  }, {
-    label: 'Family',
-    icon: 'child_care',
-  }, {
-    label: 'Acquaintances',
-    icon: 'accessibility',
-  }, {
-    label: 'Following',
-    icon: 'remove_red_eye',
-  }];
-}
-sidebarCtrl.$inject = [
-];
+    this.contactTags = [{
+      label: 'All contacts',
+      icon: 'star',
+    }, {
+      label: 'Friends',
+      icon: 'people',
+    }, {
+      label: 'Family',
+      icon: 'child_care',
+    }, {
+      label: 'Acquaintances',
+      icon: 'accessibility',
+    }, {
+      label: 'Following',
+      icon: 'remove_red_eye',
+    }];
+  },
+};
 
 export default sidebarComponent;

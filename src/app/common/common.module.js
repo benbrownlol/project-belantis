@@ -6,16 +6,12 @@ const common = angular
     loader,
     app,
   ])
-  .run(run)
-  .name;
+  .run(($transitions, cfpLoadingBar) => {
+    'ngInject';
 
-function run($transitions, cfpLoadingBar) {
-  $transitions.onStart({}, cfpLoadingBar.start);
-  $transitions.onSuccess({}, cfpLoadingBar.complete);
-}
-run.$inject = [
-  '$transitions',
-  'cfpLoadingBar',
-];
+    $transitions.onStart({}, cfpLoadingBar.start);
+    $transitions.onSuccess({}, cfpLoadingBar.complete);
+  })
+  .name;
 
 export default common;

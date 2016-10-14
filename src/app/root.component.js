@@ -1,7 +1,7 @@
-import rootTemplate from './root.html';
+import templateUrl from './root.html';
 
 const rootComponent = {
-  templateUrl: rootTemplate,
+  templateUrl,
 };
 
 export default rootComponent;
