@@ -1,5 +1,6 @@
 import uiRouter from 'angular-ui-router';
 import appComponent from './app.component';
+import appStyles from './app.scss';
 import appNav from './app-nav/app-nav.module';
 import appSidebar from './app-sidebar/app-sidebar.module';
 

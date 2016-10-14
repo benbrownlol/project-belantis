@@ -1,3 +1,4 @@
+import angular from 'angular';
 import formComponent from './auth-form.component';
 
 const authForm = angular

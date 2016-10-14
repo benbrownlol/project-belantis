@@ -4,11 +4,11 @@ function authService($firebaseAuth) {
   const auth = $firebaseAuth(firebase.auth());
   let authData = null;
 
-  this.login = user => auth
+  this.login = (user) => auth
     .$signInWithEmailAndPassword(user.email, user.password)
     .then(storeAuthData);
 
-  this.register = user => auth
+  this.register = (user) => auth
     .$createUserWithEmailAndPassword(user.email, user.password)
     .then(storeAuthData);
 
