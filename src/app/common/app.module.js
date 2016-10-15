@@ -16,7 +16,7 @@ const app = angular
 
     $stateProvider
       .state('app', {
-        // redirectTo: 'contacts',
+        redirectTo: 'contacts',
         url: '/app',
         data: {
           requiredAuth: true,

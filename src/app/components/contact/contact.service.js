@@ -8,6 +8,7 @@ function contactService(authService, $firebaseArray, $firebaseObject) {
 
   this.createNewContact = (contact) => $firebaseArray(ref.child(uid)).$add(contact);
   this.getContactById = (id) => $firebaseObject(ref.child(uid).child(id));
+  this.getContactsList = () => $firebaseArray(ref.child(uid));
   this.updateContact = (contact) => contact.$save();
   this.deleteContact = (contact) => contact.$remove();
 }

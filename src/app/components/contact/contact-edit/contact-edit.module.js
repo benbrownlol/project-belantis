@@ -3,7 +3,7 @@ import uiRouter from 'angular-ui-router';
 import contactEditComponent from './contact-edit.component';
 
 const contactEdit = angular
-  .module('components.contact-edit', [
+  .module('components.contact.contact-edit', [
     uiRouter,
   ])
   .component('contactEdit', contactEditComponent)

@@ -3,7 +3,7 @@ import uiRouter from 'angular-ui-router';
 import contactNewComponent from './contact-new.component';
 
 const contactNew = angular
-  .module('components.contact-new', [
+  .module('components.contact.contact-new', [
     uiRouter,
   ])
   .component('contactNew', contactNewComponent)
