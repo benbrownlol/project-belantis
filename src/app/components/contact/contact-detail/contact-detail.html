@@ -13,6 +13,7 @@
           type="text"
           name="name"
           required="required"
+          length-check
           ng-change="$ctrl.updateContact();"
           ng-model="$ctrl.contact.name"
           ng-model-options="{
@@ -33,6 +34,7 @@
         <input
           type="email"
           name="email"
+          length-check
           ng-change="$ctrl.updateContact();"
           ng-model="$ctrl.contact.email"
           ng-model-options="{
@@ -50,6 +52,7 @@
         <input
           type="text"
           name="jobTitle"
+          length-check
           ng-change="$ctrl.updateContact();"
           ng-model="$ctrl.contact.job"
           ng-model-options="{
@@ -67,6 +70,7 @@
         <input
           type="text"
           name="location"
+          length-check
           ng-change="$ctrl.updateContact();"
           ng-model="$ctrl.contact.location"
           ng-model-options="{
@@ -87,6 +91,7 @@
         <input
           type="text"
           name="facebook"
+          length-check
           ng-change="$ctrl.updateContact();"
           ng-model="$ctrl.contact.social.facebook"
           ng-model-options="{
@@ -104,6 +109,7 @@
         <input
           type="text"
           name="github"
+          length-check
           ng-change="$ctrl.updateContact();"
           ng-model="$ctrl.contact.social.github"
           ng-model-options="{
@@ -121,6 +127,7 @@
         <input
           type="text"
           name="twitter"
+          length-check
           ng-change="$ctrl.updateContact();"
           ng-model="$ctrl.contact.social.twitter"
           ng-model-options="{
@@ -138,6 +145,7 @@
         <input
           type="text"
           name="linkedin"
+          length-check
           ng-change="$ctrl.updateContact();"
           ng-model="$ctrl.contact.social.linkedin"
           ng-model-options="{

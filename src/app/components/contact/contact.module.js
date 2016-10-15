@@ -1,5 +1,6 @@
 import angular from 'angular';
 import contactService from './contact.service';
+import lengthCheck from './length-check/length-check.directive';
 import contacts from './contacts/contacts.module';
 import contactSingle from './contact/contact.module';
 import contactNew from './contact-new/contact-new.module';
@@ -17,6 +18,7 @@ const contact = angular
     contactTag,
   ])
   .service('contactService', contactService)
+  .directive('lengthCheck', lengthCheck)
   .name;
 
 export default contact;
