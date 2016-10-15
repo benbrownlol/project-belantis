@@ -11,6 +11,11 @@ const login = angular
     'ngInject';
 
     $stateProvider
+      .state('auth', {
+        redirectTo: 'auth.login',
+        url: '/auth',
+        template: '<div ui-view></div>',
+      })
       .state('auth.login', {
         url: '/login',
         component: 'login',
