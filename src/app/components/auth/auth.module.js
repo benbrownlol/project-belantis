@@ -1,5 +1,4 @@
 import angular from 'angular';
-import uiRouter from 'angular-ui-router';
 import firebase from 'firebase';
 import angularfire from 'angularfire';
 import authStyles from './auth.scss';
@@ -10,13 +9,12 @@ import form from './auth-form/auth-form.module';
 
 const auth = angular
   .module('components.auth', [
-    uiRouter,
     angularfire,
     login,
     register,
     form,
   ])
-  .config(($firebaseRefProvider, $stateProvider) => {
+  .config(($firebaseRefProvider) => {
     'ngInject';
 
     const firebaseConfig = {
@@ -34,13 +32,6 @@ const auth = angular
       });
 
     firebase.initializeApp(firebaseConfig);
-
-    $stateProvider
-      .state('auth', {
-        redirectTo: 'auth.login',
-        url: '/auth',
-        template: '<div ui-view></div>',
-      });
   })
   .run(($transitions, $state, authService) => {
     'ngInject';
