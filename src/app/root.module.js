@@ -15,7 +15,7 @@ const root = angular
   .config(($locationProvider, $urlRouterProvider) => {
     'ngInject';
 
-    // $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/auth/login');
   })
   .name;
