@@ -50,7 +50,7 @@ const auth = angular
     }, () => {
       authService
         .requireAuthentication()
-        .catch(() => $state.target('auth.login'));
+        .catch(() => $state.go('auth.login'));
     });
     $transitions.onStart({
       to: 'auth.*',

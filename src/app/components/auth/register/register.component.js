@@ -12,6 +12,7 @@ const registerComponent = {
         password: '',
       };
     };
+
     this.createUser = (event) => authService
       .register(event.user)
       .then(() => {

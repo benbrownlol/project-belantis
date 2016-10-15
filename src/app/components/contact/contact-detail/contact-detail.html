@@ -13,7 +13,15 @@
           type="text"
           name="name"
           required="required"
-          ng-model="$ctrl.contact.name">
+          ng-change="$ctrl.updateContact();"
+          ng-model="$ctrl.contact.name"
+          ng-model-options="{
+            'updateOn': 'default blur',
+            'debounce': {
+              'default': 250,
+              'blur': 0
+            }
+          }">
       </div>
       <div class="contact__field">
         <label>
@@ -25,7 +33,15 @@
         <input
           type="email"
           name="email"
-          ng-model="$ctrl.contact.email">
+          ng-change="$ctrl.updateContact();"
+          ng-model="$ctrl.contact.email"
+          ng-model-options="{
+            'updateOn': 'default blur',
+            'debounce': {
+              'default': 250,
+              'blur': 0
+            }
+          }">
       </div>
       <div class="contact__field">
         <label>
@@ -34,7 +50,15 @@
         <input
           type="text"
           name="jobTitle"
-          ng-model="$ctrl.contact.job">
+          ng-change="$ctrl.updateContact();"
+          ng-model="$ctrl.contact.job"
+          ng-model-options="{
+            'updateOn': 'default blur',
+            'debounce': {
+              'default': 250,
+              'blur': 0
+            }
+          }">
       </div>
       <div class="contact__field">
         <label>
@@ -43,7 +67,15 @@
         <input
           type="text"
           name="location"
-          ng-model="$ctrl.contact.location">
+          ng-change="$ctrl.updateContact();"
+          ng-model="$ctrl.contact.location"
+          ng-model-options="{
+            'updateOn': 'default blur',
+            'debounce': {
+              'default': 250,
+              'blur': 0
+            }
+          }">
       </div>
     </div>
     <div class="contact__box contact__box--no-margin">
@@ -55,7 +87,15 @@
         <input
           type="text"
           name="facebook"
-          ng-model="$ctrl.contact.social.facebook">
+          ng-change="$ctrl.updateContact();"
+          ng-model="$ctrl.contact.social.facebook"
+          ng-model-options="{
+            'updateOn': 'default blur',
+            'debounce': {
+              'default': 250,
+              'blur': 0
+            }
+          }">
       </div>
       <div class="contact__field">
         <label>
@@ -64,7 +104,15 @@
         <input
           type="text"
           name="github"
-          ng-model="$ctrl.contact.social.github">
+          ng-change="$ctrl.updateContact();"
+          ng-model="$ctrl.contact.social.github"
+          ng-model-options="{
+            'updateOn': 'default blur',
+            'debounce': {
+              'default': 250,
+              'blur': 0
+            }
+          }">
       </div>
       <div class="contact__field">
         <label>
@@ -73,7 +121,15 @@
         <input
           type="text"
           name="twitter"
-          ng-model="$ctrl.contact.social.twitter">
+          ng-change="$ctrl.updateContact();"
+          ng-model="$ctrl.contact.social.twitter"
+          ng-model-options="{
+            'updateOn': 'default blur',
+            'debounce': {
+              'default': 250,
+              'blur': 0
+            }
+          }">
       </div>
       <div class="contact__field">
         <label>
@@ -82,7 +138,15 @@
         <input
           type="text"
           name="linkedin"
-          ng-model="$ctrl.contact.social.linkedin">
+          ng-change="$ctrl.updateContact();"
+          ng-model="$ctrl.contact.social.linkedin"
+          ng-model-options="{
+            'updateOn': 'default blur',
+            'debounce': {
+              'default': 250,
+              'blur': 0
+            }
+          }">
       </div>
     </div>
 

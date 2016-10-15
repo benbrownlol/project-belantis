@@ -4,6 +4,8 @@ const contactDetailComponent = {
   bindings: {
     contact: '<',
     onSave: '&',
+    onUpdate: '&',
+    onDelete: '&',
   },
   templateUrl,
   controller() {
@@ -15,6 +17,22 @@ const contactDetailComponent = {
 
     this.saveContact = () => {
       this.onSave({
+        $event: {
+          contact: this.contact,
+        },
+      });
+    };
+
+    this.updateContact = () => {
+      this.onUpdate({
+        $event: {
+          contact: this.contact,
+        },
+      });
+    };
+
+    this.deleteContact = () => {
+      this.onDelete({
         $event: {
           contact: this.contact,
         },

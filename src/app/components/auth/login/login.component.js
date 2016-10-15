@@ -12,6 +12,7 @@ const loginComponent = {
         password: '',
       };
     };
+
     this.loginUser = (event) => authService
       .login(event.user)
       .then(() => {
