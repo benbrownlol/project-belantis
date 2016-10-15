@@ -38,6 +38,11 @@ const contactDetailComponent = {
         },
       });
     };
+
+    this.tagChange = (event) => {
+      this.contact.tag = event.tag;
+      this.updateContact();
+    };
   },
 };
 
