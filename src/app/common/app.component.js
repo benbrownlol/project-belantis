@@ -2,11 +2,13 @@ import templateUrl from './app.html';
 
 const appComponent = {
   templateUrl,
-  controller(authService, $state) {
-    'ngInject';
+  controller: class AppComponent {
+    constructor(AuthService, $state) {
+      'ngInject';
 
-    this.user = authService.getUser();
-    this.logout = () => authService.logout().then(() => $state.go('auth.login'));
+      this.user = AuthService.getUser();
+      this.logout = () => AuthService.logout().then(() => $state.go('auth.login'));
+    }
   },
 };
 

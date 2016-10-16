@@ -2,10 +2,14 @@ import templateUrl from './contact-new.html';
 
 const contactNewComponent = {
   templateUrl,
-  controller(contactService, $state) {
-    'ngInject';
+  controller: class ContactNewComponent {
+    constructor(ContactService, $state) {
+      'ngInject';
 
-    this.$onInit = () => {
+      this.contactService = ContactService;
+      this.$state = $state;
+    }
+    $onInit() {
       this.contact = {
         name: '',
         email: '',
@@ -19,15 +23,16 @@ const contactNewComponent = {
         },
         tag: 'none',
       };
-    };
-
-    this.createNewContact = (event) => contactService
-      .createNewContact(event.contact)
-      .then((contact) => {
-        $state.go('contact', {
-          id: contact.key,
+    }
+    createNewContact(event) {
+      return this.contactService
+        .createNewContact(event.contact)
+        .then((contact) => {
+          this.$state.go('contact', {
+            id: contact.key,
+          });
         });
-      });
+    }
   },
 };
 

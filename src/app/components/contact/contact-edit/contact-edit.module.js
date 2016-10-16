@@ -16,11 +16,11 @@ const contactEdit = angular
         url: '/contact/:id',
         component: 'contactEdit',
         resolve: {
-          contact($transition$, contactService) {
+          contact($transition$, ContactService) {
             'ngInject';
 
             const key = $transition$.params().id;
-            return contactService.getContactById(key).$loaded();
+            return ContactService.getContactById(key).$loaded();
           },
         },
       });

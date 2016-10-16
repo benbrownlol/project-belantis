@@ -1,50 +1,49 @@
 import firebase from 'firebase';
 
-function authService($firebaseAuth) {
-  const auth = $firebaseAuth(firebase.auth());
-  let authData = null;
+class AuthService {
+  constructor($firebaseAuth) {
+    'ngInject';
 
-  this.login = (user) => auth
-    .$signInWithEmailAndPassword(user.email, user.password)
-    .then(storeAuthData);
-
-  this.register = (user) => auth
-    .$createUserWithEmailAndPassword(user.email, user.password)
-    .then(storeAuthData);
-
-  this.logout = () => auth
-    .$signOut()
-    .then(clearAuthData);
-
-  this.requireAuthentication = () => auth
-    .$waitForSignIn()
-    .then(onSignIn);
-
-  this.isAuthenticated = () => !!authData;
-
-  this.getUser = () => {
-    if (authData) return authData;
-  };
-
-  function onSignIn(user) {
-    // REVIEW: Function side-effect - Should make pure?
-    authData = user;
-    return auth.$requireSignIn();
+    this.auth = $firebaseAuth(firebase.auth());
+    this.authData = null;
+    this.onSignIn = (user) => {
+      this.authData = user;
+      return this.auth.$requireSignIn();
+    };
+    this.storeAuthData = (data) => {
+      this.authData = data;
+      return this.authData;
+    };
+    this.clearAuthData = () => {
+      this.authData = null;
+    };
   }
-
-  function storeAuthData(data) {
-    // REVIEW: Function side-effect - Should make pure?
-    authData = data;
-    return authData;
+  login(user) {
+    return this.auth
+      .$signInWithEmailAndPassword(user.email, user.password)
+      .then(this.storeAuthData);
   }
-
-  function clearAuthData() {
-    // REVIEW: Function side-effect - Should make pure?
-    authData = null;
+  register(user) {
+    return this.auth
+      .$createUserWithEmailAndPassword(user.email, user.password)
+      .then(this.storeAuthData);
+  }
+  logout() {
+    return this.auth
+      .$signOut()
+      .then(this.clearAuthData);
+  }
+  requireAuthentication() {
+    return this.auth
+      .$waitForSignIn()
+      .then(this.onSignIn);
+  }
+  isAuthenticated() {
+    return !!this.authData;
+  }
+  getUser() {
+    if (this.authData) return this.authData;
   }
 }
-authService.$inject = [
-  '$firebaseAuth',
-];
 
-export default authService;
+export default AuthService;

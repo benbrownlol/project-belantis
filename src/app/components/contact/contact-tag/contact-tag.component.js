@@ -6,26 +6,25 @@ const contactTagComponent = {
     onChange: '&',
   },
   templateUrl,
-  controller() {
-    'ngInject';
-
-    this.$onInit = () => {
+  controller: class ContactTagComponent {
+    constructor() {
+      'ngInject';
+    }
+    $onInit() {
       this.tags = ['friends', 'family', 'acquaintances', 'following'];
-    };
-
-    this.$onChanges = (changes) => {
+    }
+    $onChanges(changes) {
       if (changes.tag) {
         this.tag = angular.copy(this.tag);
       }
-    };
-
-    this.updateTag = (tag) => {
+    }
+    updateTag(tag) {
       this.onChange({
         $event: {
           tag,
         },
       });
-    };
+    }
   },
 };
 

@@ -24,10 +24,10 @@ const contacts = angular
           },
         },
         resolve: {
-          contacts(contactService) {
+          contacts(ContactService) {
             'ngInject';
 
-            return contactService.getContactsList().$loaded();
+            return ContactService.getContactsList().$loaded();
           },
           filter($transition$) {
             'ngInject';

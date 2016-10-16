@@ -2,24 +2,29 @@ import templateUrl from './login.html';
 
 const loginComponent = {
   templateUrl,
-  controller(authService, $state) {
-    'ngInject';
+  controller: class LoginComponent {
+    constructor(AuthService, $state) {
+      'ngInject';
 
-    this.$onInit = () => {
+      this.authService = AuthService;
+      this.$state = $state;
+    }
+    $onInit() {
       this.error = null;
       this.user = {
         email: '',
         password: '',
       };
-    };
-
-    this.loginUser = (event) => authService
-      .login(event.user)
-      .then(() => {
-        $state.go('app');
-      }, reason => {
-        this.error = reason.message;
-      });
+    }
+    loginUser(event) {
+      return this.authService
+        .login(event.user)
+        .then(() => {
+          this.$state.go('app');
+        }, reason => {
+          this.error = reason.message;
+        });
+    }
   },
 };
 

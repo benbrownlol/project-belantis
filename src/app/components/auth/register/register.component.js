@@ -2,24 +2,29 @@ import templateUrl from './register.html';
 
 const registerComponent = {
   templateUrl,
-  controller(authService, $state) {
-    'ngInject';
+  controller: class RegisterComponent {
+    constructor(AuthService, $state) {
+      'ngInject';
 
-    this.$onInit = () => {
+      this.authService = AuthService;
+      this.$state = $state;
+    }
+    $onInit() {
       this.error = null;
       this.user = {
         email: '',
         password: '',
       };
-    };
-
-    this.createUser = (event) => authService
-      .register(event.user)
-      .then(() => {
-        $state.go('app');
-      }, reason => {
-        this.error = reason.message;
-      });
+    }
+    createUser(event) {
+      return this.authService
+        .register(event.user)
+        .then(() => {
+          this.$state.go('app');
+        }, reason => {
+          this.error = reason.message;
+        });
+    }
   },
 };
 

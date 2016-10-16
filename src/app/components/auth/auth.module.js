@@ -2,7 +2,7 @@ import angular from 'angular';
 import firebase from 'firebase';
 import angularfire from 'angularfire';
 import authStyles from './auth.scss';
-import authService from './auth.service';
+import AuthService from './auth.service';
 import login from './login/login.module';
 import register from './register/register.module';
 import form from './auth-form/auth-form.module';
@@ -33,23 +33,23 @@ const auth = angular
 
     firebase.initializeApp(firebaseConfig);
   })
-  .run(($transitions, $state, authService) => {
+  .run(($transitions, $state, AuthService) => {
     'ngInject';
 
     $transitions.onStart({
       to: state => !!(state.data && state.data.requiredAuth),
     }, () => {
-      authService
+      AuthService
         .requireAuthentication()
         .catch(() => $state.go('auth.login'));
     });
     $transitions.onStart({
       to: 'auth.*',
     }, () => {
-      if (authService.isAuthenticated()) return $state.target('app');
+      if (AuthService.isAuthenticated()) return $state.target('app');
     });
   })
-  .service('authService', authService)
+  .service('AuthService', AuthService)
   .name;
 
 export default auth;

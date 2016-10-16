@@ -8,41 +8,38 @@ const contactDetailComponent = {
     onDelete: '&',
   },
   templateUrl,
-  controller() {
-    'ngInject';
-
-    this.$onInit = () => {
+  controller: class ContactDetailComponent {
+    constructor() {
+      'ngInject';
+    }
+    $onInit() {
       this.isNewContact = !this.contact.$id;
-    };
-
-    this.saveContact = () => {
+    }
+    saveContact() {
       this.onSave({
         $event: {
           contact: this.contact,
         },
       });
-    };
-
-    this.updateContact = () => {
+    }
+    updateContact() {
       this.onUpdate({
         $event: {
           contact: this.contact,
         },
       });
-    };
-
-    this.deleteContact = () => {
+    }
+    deleteContact() {
       this.onDelete({
         $event: {
           contact: this.contact,
         },
       });
-    };
-
-    this.tagChange = (event) => {
+    }
+    tagChange(event) {
       this.contact.tag = event.tag;
       this.updateContact();
-    };
+    }
   },
 };
 
