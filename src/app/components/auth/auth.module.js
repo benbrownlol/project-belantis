@@ -1,11 +1,11 @@
 import angular from 'angular';
 import firebase from 'firebase';
 import angularfire from 'angularfire';
-import authStyles from './auth.scss';
 import AuthService from './auth.service';
 import login from './login/login.module';
 import register from './register/register.module';
 import form from './auth-form/auth-form.module';
+import './auth.scss';
 
 const auth = angular
   .module('components.auth', [

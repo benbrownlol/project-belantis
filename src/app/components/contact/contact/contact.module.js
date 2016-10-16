@@ -1,6 +1,6 @@
 import angular from 'angular';
 import contactComponent from './contact.component';
-import contactStyles from './contact.scss';
+import './contact.scss';
 
 const contact = angular
   .module('components.contact.contact', [])

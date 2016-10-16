@@ -1,5 +1,5 @@
 import navComponent from './app-nav.component';
-import navStyles from './app-nav.scss';
+import './app-nav.scss';
 
 const appNav = angular
   .module('common.app-nav', [])

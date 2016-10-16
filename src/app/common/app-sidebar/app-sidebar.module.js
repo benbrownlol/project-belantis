@@ -1,5 +1,5 @@
 import sidebarComponent from './app-sidebar.component';
-import sidebarStyles from './app-sidebar.scss';
+import './app-sidebar.scss';
 
 const appSidebar = angular
   .module('common.app-sidebar', [])

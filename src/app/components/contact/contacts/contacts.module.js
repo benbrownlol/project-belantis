@@ -2,7 +2,7 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import contactsComponent from './contacts.component';
 import contactsFilter from './contacts.filter';
-import contactsStyles from './contacts.scss';
+import './contacts.scss';
 
 const contacts = angular
   .module('components.contact.contacts', [

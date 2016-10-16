@@ -1,6 +1,6 @@
 import angular from 'angular';
 import contactDetailComponent from './contact-detail.component';
-import contactDetailStyles from './contact-detail.scss';
+import './contact-detail.scss';
 
 const contactDetail = angular
   .module('components.contact.contact-detail', [])
