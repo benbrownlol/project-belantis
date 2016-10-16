@@ -8,21 +8,22 @@ const formComponent = {
     onSubmit: '&',
   },
   templateUrl,
-  controller() {
-    'ngInject';
-
-    this.$onChanges = changes => {
+  controller: class FormComponent {
+    constructor() {
+      'ngInject';
+    }
+    $onChanges(changes) {
       if (changes.user) {
         this.user = angular.copy(this.user);
       }
-    };
-    this.submitForm = () => {
+    }
+    submitForm() {
       this.onSubmit({
         $event: {
           user: this.user,
         },
       });
-    };
+    }
   },
 };
 

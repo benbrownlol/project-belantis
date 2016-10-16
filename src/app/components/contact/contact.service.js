@@ -1,16 +1,29 @@
 import firebase from 'firebase';
 
-function contactService(authService, $firebaseArray, $firebaseObject) {
-  'ngInject';
+class ContactService {
+  constructor(AuthService, $firebaseArray, $firebaseObject) {
+    'ngInject';
 
-  const ref = firebase.database().ref('contacts');
-  const uid = authService.getUser().uid;
-
-  this.createNewContact = (contact) => $firebaseArray(ref.child(uid)).$add(contact);
-  this.getContactById = (id) => $firebaseObject(ref.child(uid).child(id));
-  this.getContactsList = () => $firebaseArray(ref.child(uid));
-  this.updateContact = (contact) => contact.$save();
-  this.deleteContact = (contact) => contact.$remove();
+    this.$firebaseArray = $firebaseArray;
+    this.$firebaseObject = $firebaseObject;
+    this.ref = firebase.database().ref('contacts');
+    this.uid = AuthService.getUser().uid;
+  }
+  createNewContact(contact) {
+    return this.$firebaseArray(this.ref.child(this.uid)).$add(contact);
+  }
+  getContactById(id) {
+    return this.$firebaseObject(this.ref.child(this.uid).child(id));
+  }
+  getContactsList() {
+    return this.$firebaseArray(this.ref.child(this.uid));
+  }
+  updateContact(contact) {
+    return contact.$save();
+  }
+  deleteContact(contact) {
+    return contact.$remove();
+  }
 }
 
-export default contactService;
+export default ContactService;

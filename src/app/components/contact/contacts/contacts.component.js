@@ -6,18 +6,18 @@ const contactsComponent = {
     filter: '<',
   },
   templateUrl,
-  controller($state, $filter) {
-    'ngInject';
+  controller: class ContactsComponent {
+    constructor($state, $filter) {
+      'ngInject';
 
-    const contacts = this.contacts;
-
-    this.filteredContacts = $filter('contactsFilter')(contacts, this.filter);
-
-    this.goToContact = (event) => {
-      $state.go('contact', {
+      this.$state = $state;
+      this.filteredContacts = $filter('contactsFilter')(this.contacts, this.filter);
+    }
+    goToContact(event) {
+      this.$state.go('contact', {
         id: event.contactId,
       });
-    };
+    }
   },
 };
 

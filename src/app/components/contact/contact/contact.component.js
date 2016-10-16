@@ -6,16 +6,17 @@ const contactComponent = {
     onSelect: '&',
   },
   templateUrl,
-  controller() {
-    'ngInject';
-
-    this.selectContact = () => {
+  controller: class ContactComponent {
+    constructor() {
+      'ngInject';
+    }
+    selectContact() {
       this.onSelect({
         $event: {
           contactId: this.contact.$id,
         },
       });
-    };
+    }
   },
 };
 

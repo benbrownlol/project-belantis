@@ -5,30 +5,35 @@ const contactEditComponent = {
     contact: '<',
   },
   templateUrl,
-  controller(contactService, cfpLoadingBar, $window, $state) {
-    'ngInject';
+  controller: class ContactEditComponent {
+    constructor(ContactService, cfpLoadingBar, $window, $state) {
+      'ngInject';
 
-    this.deleteContact = (event) => {
+      this.contactService = ContactService;
+      this.cfpLoadingBar = cfpLoadingBar;
+      this.$window = $window;
+      this.$state = $state;
+    }
+    deleteContact(event) {
       const message = `Delete ${event.contact.name} from contacts?`;
-      if ($window.confirm(message)) {
-        return contactService
+      if (this.$window.confirm(message)) {
+        return this.contactService
           .deleteContact(event.contact)
           .then(() => {
-            $state.go('contacts');
+            this.$state.go('contacts');
           });
       }
-    };
-
-    this.updateContact = (event) => {
-      cfpLoadingBar.start();
-      return contactService
+    }
+    updateContact(event) {
+      this.cfpLoadingBar.start();
+      return this.contactService
         .updateContact(event.contact)
         .then(() => {
-          cfpLoadingBar.complete();
+          this.cfpLoadingBar.complete();
         }, () => {
-          cfpLoadingBar.complete();
+          this.cfpLoadingBar.complete();
         });
-    };
+    }
   },
 };
 
