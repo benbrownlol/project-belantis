@@ -86,6 +86,10 @@ const config = {
     publicPath: '/',
     filename: 'js/app.[name].js',
   },
+  devServer: {
+    port: 8080,
+    historyApiFallback: true,
+  },
 };
 
 module.exports = config;
