@@ -1,6 +1,6 @@
 import templateUrl from './app-sidebar.html';
 
-const sidebarComponent = {
+export const sidebarComponent = {
   templateUrl,
   controller: class SidebarComponent {
     constructor() {
@@ -30,5 +30,3 @@ const sidebarComponent = {
     }
   },
 };
-
-export default sidebarComponent;

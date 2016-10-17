@@ -1,13 +1,9 @@
-import angular from 'angular';
-import uiRouter from 'angular-ui-router';
-import contactsComponent from './contacts.component';
-import contactsFilter from './contacts.filter';
-import contactsStyles from './contacts.scss';
+import { contactsComponent } from './contacts.component';
+import { contactsFilter } from './contacts.filter';
+import './contacts.scss';
 
-const contacts = angular
-  .module('components.contact.contacts', [
-    uiRouter,
-  ])
+export const contacts = angular
+  .module('components.contact.contacts', [])
   .component('contacts', contactsComponent)
   .filter('contactsFilter', contactsFilter)
   .config(($stateProvider) => {
@@ -38,5 +34,3 @@ const contacts = angular
       });
   })
   .name;
-
-export default contacts;

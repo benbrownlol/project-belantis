@@ -1,6 +1,6 @@
 import templateUrl from './contact-new.html';
 
-const contactNewComponent = {
+export const contactNewComponent = {
   templateUrl,
   controller: class ContactNewComponent {
     constructor(ContactService, $state) {
@@ -35,5 +35,3 @@ const contactNewComponent = {
     }
   },
 };
-
-export default contactNewComponent;

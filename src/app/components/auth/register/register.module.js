@@ -1,11 +1,7 @@
-import angular from 'angular';
-import uiRouter from 'angular-ui-router';
-import registerComponent from './register.component';
+import { registerComponent } from './register.component';
 
-const register = angular
-  .module('components.auth.register', [
-    uiRouter,
-  ])
+export const register = angular
+  .module('components.auth.register', [])
   .component('register', registerComponent)
   .config(($stateProvider) => {
     'ngInject';
@@ -17,5 +13,3 @@ const register = angular
       });
   })
   .name;
-
-export default register;

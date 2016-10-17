@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 
-class ContactService {
+export class ContactService {
   constructor(AuthService, $firebaseArray, $firebaseObject) {
     'ngInject';
 
@@ -25,5 +25,3 @@ class ContactService {
     return contact.$remove();
   }
 }
-
-export default ContactService;

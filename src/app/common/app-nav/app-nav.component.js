@@ -1,11 +1,9 @@
 import templateUrl from './app-nav.html';
 
-const navComponent = {
+export const navComponent = {
   bindings: {
     user: '<',
     onLogout: '&',
   },
   templateUrl,
 };
-
-export default navComponent;

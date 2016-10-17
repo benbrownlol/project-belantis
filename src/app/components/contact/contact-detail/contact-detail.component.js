@@ -1,6 +1,6 @@
 import templateUrl from './contact-detail.html';
 
-const contactDetailComponent = {
+export const contactDetailComponent = {
   bindings: {
     contact: '<',
     onSave: '&',
@@ -42,5 +42,3 @@ const contactDetailComponent = {
     }
   },
 };
-
-export default contactDetailComponent;

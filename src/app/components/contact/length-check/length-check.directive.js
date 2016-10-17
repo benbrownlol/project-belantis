@@ -1,4 +1,4 @@
-function lengthCheck() {
+export function lengthCheck() {
   return {
     restrict: 'A',
     require: 'ngModel',
@@ -17,5 +17,3 @@ function lengthCheck() {
     },
   };
 }
-
-export default lengthCheck;

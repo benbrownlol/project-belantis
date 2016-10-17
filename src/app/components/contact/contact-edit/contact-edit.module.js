@@ -1,11 +1,7 @@
-import angular from 'angular';
-import uiRouter from 'angular-ui-router';
-import contactEditComponent from './contact-edit.component';
+import { contactEditComponent } from './contact-edit.component';
 
-const contactEdit = angular
-  .module('components.contact.contact-edit', [
-    uiRouter,
-  ])
+export const contactEdit = angular
+  .module('components.contact.contact-edit', [])
   .component('contactEdit', contactEditComponent)
   .config(($stateProvider) => {
     'ngInject';
@@ -26,5 +22,3 @@ const contactEdit = angular
       });
   })
   .name;
-
-export default contactEdit;

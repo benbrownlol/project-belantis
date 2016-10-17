@@ -1,14 +1,13 @@
-import angular from 'angular';
-import ContactService from './contact.service';
-import lengthCheck from './length-check/length-check.directive';
-import contacts from './contacts/contacts.module';
-import contactSingle from './contact/contact.module';
-import contactNew from './contact-new/contact-new.module';
-import contactDetail from './contact-detail/contact-detail.module';
-import contactEdit from './contact-edit/contact-edit.module';
-import contactTag from './contact-tag/contact-tag.module';
+import { ContactService } from './contact.service';
+import { lengthCheck } from './length-check/length-check.directive';
+import { contacts } from './contacts/contacts.module';
+import { contactSingle } from './contact/contact.module';
+import { contactNew } from './contact-new/contact-new.module';
+import { contactDetail } from './contact-detail/contact-detail.module';
+import { contactEdit } from './contact-edit/contact-edit.module';
+import { contactTag } from './contact-tag/contact-tag.module';
 
-const contact = angular
+export const contact = angular
   .module('components.contact', [
     contacts,
     contactSingle,
@@ -20,5 +19,3 @@ const contact = angular
   .service('ContactService', ContactService)
   .directive('lengthCheck', lengthCheck)
   .name;
-
-export default contact;

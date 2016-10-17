@@ -1,7 +1,7 @@
 import loader from 'angular-loading-bar';
-import app from './app.module';
+import { app } from './app.module';
 
-const common = angular
+export const common = angular
   .module('common', [
     loader,
     app,
@@ -13,5 +13,3 @@ const common = angular
     $transitions.onSuccess({}, cfpLoadingBar.complete);
   })
   .name;
-
-export default common;

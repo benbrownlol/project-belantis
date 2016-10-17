@@ -1,11 +1,7 @@
-import angular from 'angular';
-import uiRouter from 'angular-ui-router';
-import loginComponent from './login.component';
+import { loginComponent } from './login.component';
 
-const login = angular
-  .module('components.auth.login', [
-    uiRouter,
-  ])
+export const login = angular
+  .module('components.auth.login', [])
   .component('login', loginComponent)
   .config(($stateProvider) => {
     'ngInject';
@@ -22,5 +18,3 @@ const login = angular
       });
   })
   .name;
-
-export default login;
