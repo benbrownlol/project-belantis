@@ -1,6 +1,6 @@
 import templateUrl from './contacts.html';
 
-const contactsComponent = {
+export const contactsComponent = {
   bindings: {
     contacts: '<',
     filter: '<',
@@ -20,5 +20,3 @@ const contactsComponent = {
     }
   },
 };
-
-export default contactsComponent;

@@ -1,6 +1,6 @@
 import templateUrl from './contact.html';
 
-const contactComponent = {
+export const contactComponent = {
   bindings: {
     contact: '<',
     onSelect: '&',
@@ -19,5 +19,3 @@ const contactComponent = {
     }
   },
 };
-
-export default contactComponent;

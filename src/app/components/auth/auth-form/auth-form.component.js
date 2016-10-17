@@ -1,6 +1,6 @@
 import templateUrl from './auth-form.html';
 
-const formComponent = {
+export const formComponent = {
   bindings: {
     user: '<',
     button: '@',
@@ -26,5 +26,3 @@ const formComponent = {
     }
   },
 };
-
-export default formComponent;

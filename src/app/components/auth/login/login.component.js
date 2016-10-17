@@ -1,6 +1,6 @@
 import templateUrl from './login.html';
 
-const loginComponent = {
+export const loginComponent = {
   templateUrl,
   controller: class LoginComponent {
     constructor(AuthService, $state) {
@@ -27,5 +27,3 @@ const loginComponent = {
     }
   },
 };
-
-export default loginComponent;

@@ -1,6 +1,6 @@
 import templateUrl from './register.html';
 
-const registerComponent = {
+export const registerComponent = {
   templateUrl,
   controller: class RegisterComponent {
     constructor(AuthService, $state) {
@@ -27,5 +27,3 @@ const registerComponent = {
     }
   },
 };
-
-export default registerComponent;

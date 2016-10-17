@@ -1,7 +1,5 @@
 import templateUrl from './root.html';
 
-const rootComponent = {
+export const rootComponent = {
   templateUrl,
 };
-
-export default rootComponent;

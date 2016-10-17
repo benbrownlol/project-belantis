@@ -1,6 +1,6 @@
 import templateUrl from './contact-tag.html';
 
-const contactTagComponent = {
+export const contactTagComponent = {
   bindings: {
     tag: '<',
     onChange: '&',
@@ -27,5 +27,3 @@ const contactTagComponent = {
     }
   },
 };
-
-export default contactTagComponent;

@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 
-class AuthService {
+export class AuthService {
   constructor($firebaseAuth) {
     'ngInject';
 
@@ -45,5 +45,3 @@ class AuthService {
     if (this.authData) return this.authData;
   }
 }
-
-export default AuthService;

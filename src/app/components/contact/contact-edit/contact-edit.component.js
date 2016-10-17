@@ -1,6 +1,6 @@
 import templateUrl from './contact-edit.html';
 
-const contactEditComponent = {
+export const contactEditComponent = {
   bindings: {
     contact: '<',
   },
@@ -36,5 +36,3 @@ const contactEditComponent = {
     }
   },
 };
-
-export default contactEditComponent;

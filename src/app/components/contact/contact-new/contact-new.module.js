@@ -1,11 +1,7 @@
-import angular from 'angular';
-import uiRouter from 'angular-ui-router';
-import contactNewComponent from './contact-new.component';
+import { contactNewComponent } from './contact-new.component';
 
-const contactNew = angular
-  .module('components.contact.contact-new', [
-    uiRouter,
-  ])
+export const contactNew = angular
+  .module('components.contact.contact-new', [])
   .component('contactNew', contactNewComponent)
   .config(($stateProvider) => {
     'ngInject';
@@ -18,5 +14,3 @@ const contactNew = angular
       });
   })
   .name;
-
-export default contactNew;
