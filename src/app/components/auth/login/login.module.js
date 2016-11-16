@@ -1,7 +1,10 @@
+import uiRouter from 'angular-ui-router';
 import { loginComponent } from './login.component';
 
 export const login = angular
-  .module('components.auth.login', [])
+  .module('components.auth.login', [
+    uiRouter,
+  ])
   .component('login', loginComponent)
   .config(($stateProvider) => {
     'ngInject';

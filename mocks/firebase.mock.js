@@ -1,4 +1,4 @@
-function MockFirebase() {}
+function MockFirebase () {}
 MockFirebase.prototype.initializeApp = function () {};
 window.firebase = new MockFirebase();
 

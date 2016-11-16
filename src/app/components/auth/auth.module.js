@@ -1,5 +1,6 @@
 import firebase from 'firebase';
 import angularfire from 'angularfire';
+import uiRouter from 'angular-ui-router';
 import { AuthService } from './auth.service';
 import { login } from './login/login.module';
 import { register } from './register/register.module';
@@ -19,6 +20,7 @@ export const app = firebase.initializeApp(firebaseConfig);
 export const auth = angular
   .module('components.auth', [
     angularfire,
+		uiRouter,
     login,
     register,
     authForm,
@@ -36,11 +38,11 @@ export const auth = angular
     'ngInject';
 
     $transitions.onStart({
-      to: state => !!(state.data && state.data.requiredAuth),
+      to: (state) => !!(state.data && state.data.requiredAuth),
     }, () => {
-      AuthService
+      return AuthService
         .requireAuthentication()
-        .catch(() => $state.go('auth.login'));
+        .catch(() => $state.target('auth.login'));
     });
     $transitions.onStart({
       to: 'auth.*',
