@@ -6,6 +6,16 @@ import { register } from './register/register.module';
 import { authForm } from './auth-form/auth-form.module';
 import './auth.scss';
 
+const firebaseConfig = {
+	apiKey: 'AIzaSyBSf5XnsvoPRewbCVQ1MXPD62KKlA7N6-o',
+	authDomain: 'project-belantis.firebaseapp.com',
+	databaseURL: 'https://project-belantis.firebaseio.com',
+	storageBucket: 'project-belantis.appspot.com',
+	messagingSenderId: '615638830609',
+};
+
+export const app = firebase.initializeApp(firebaseConfig);
+
 export const auth = angular
   .module('components.auth', [
     angularfire,
@@ -16,21 +26,11 @@ export const auth = angular
   .config(($firebaseRefProvider) => {
     'ngInject';
 
-    const firebaseConfig = {
-      apiKey: 'AIzaSyBSf5XnsvoPRewbCVQ1MXPD62KKlA7N6-o',
-      authDomain: 'project-belantis.firebaseapp.com',
-      databaseURL: 'https://project-belantis.firebaseio.com',
-      storageBucket: 'project-belantis.appspot.com',
-      messagingSenderId: '615638830609',
-    };
-
     $firebaseRefProvider
       .registerUrl({
         default: firebaseConfig.databaseURL,
         contacts: `${firebaseConfig.databaseURL}/contacts`,
       });
-
-    firebase.initializeApp(firebaseConfig);
   })
   .run(($transitions, $state, AuthService) => {
     'ngInject';
