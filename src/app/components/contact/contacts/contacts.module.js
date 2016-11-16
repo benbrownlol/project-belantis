@@ -1,9 +1,12 @@
+import uiRouter from 'angular-ui-router';
 import { contactsComponent } from './contacts.component';
 import { contactsFilter } from './contacts.filter';
 import './contacts.scss';
 
 export const contacts = angular
-  .module('components.contact.contacts', [])
+  .module('components.contact.contacts', [
+    uiRouter,
+  ])
   .component('contacts', contactsComponent)
   .filter('contactsFilter', contactsFilter)
   .config(($stateProvider) => {

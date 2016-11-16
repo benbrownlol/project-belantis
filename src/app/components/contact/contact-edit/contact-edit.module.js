@@ -1,7 +1,10 @@
+import uiRouter from 'angular-ui-router';
 import { contactEditComponent } from './contact-edit.component';
 
 export const contactEdit = angular
-  .module('components.contact.contact-edit', [])
+  .module('components.contact.contact-edit', [
+    uiRouter,
+  ])
   .component('contactEdit', contactEditComponent)
   .config(($stateProvider) => {
     'ngInject';
